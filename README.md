@@ -6,8 +6,8 @@ This project demonstrates advanced Django concepts including **payment integrati
 
 ---
 
-## 📽 Project Video / Learning Purpose
-In this project (and tutorial video), we cover:
+## Learning Purpose
+
 - **Django advanced concepts**
 - How to **integrate a payment gateway** (like Razorpay or Stripe)
 - How to **send account activation emails**
