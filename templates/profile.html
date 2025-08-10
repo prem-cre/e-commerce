@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% block body %}
+<section class="profile-section">
+    <div class="container">
+        <div class="profile-header">
+            <h1>My Orders</h1>
+            <p>Track your order history and delivery status</p>
+        </div>
+
+        {% if items %}
+        <div class="orders-table-wrapper">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Name</th>
+                        <th>Products</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Delivery</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in items %}
+                    <tr>
+                        <td class="order-id">{{i.oid}}</td>
+                        <td>{{i.name}}</td>
+                        <td class="products">{{i.items_json}}</td>
+                        <td class="amount">₹{{i.amount}}</td>
+                        <td class="payment-status {% if i.paymentstatus == 'PAID' %}status-paid{% else %}status-pending{% endif %}">
+                            {{i.paymentstatus}}
+                        </td>
+                        <td class="address">{{i.address1}}</td>
+                        <td>{{i.phone}}</td>
+                        
+                        {% if status %}
+                            {% for j in status %}
+                                <td class="delivery-status">{{j.update_desc}}</td>
+                                <td class="delivery-icon">
+                                    {% if j.delivered %}
+                                        <span class="status-icon delivered">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            Delivered
+                                        </span>
+                                    {% else %}
+                                        <span class="status-icon in-transit">
+                                            <i class="fa-solid fa-truck"></i>
+                                            In Transit
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td class="order-date">{{j.timestamp|date:"d M, Y"}}</td>
+                            {% endfor %}
+                        {% else %}
+                            <td class="delivery-status">Processing</td>
+                            <td class="delivery-icon">
+                                <span class="status-icon processing">
+                                    <i class="fa-solid fa-clock"></i>
+                                    Processing
+                                </span>
+                            </td>
+                            <td class="order-date">{{i.order_date|date:"d M, Y"}}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-orders">
+            <div class="no-orders-content">
+                <i class="fas fa-shopping-bag"></i>
+                <h2>No Orders Yet</h2>
+                <p>Looks like you haven't made any orders yet.</p>
+                <a href="/" class="shop-now-btn">Start Shopping</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+    </div>
+</section>
+{% endblock body %}

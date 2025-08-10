@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>
+{% block title %} {% endblock title %}
+
+  </title>
+  <meta content="ecommerce website we deliver products in 1 hours" name="description">
+  <meta content="ecommerce" name="amazon,flipkart,selling,products">
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Template CSS Files -->
+  <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/modern.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/custom.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/profile.css' %}" rel="stylesheet">
+  
+  <!-- Add mobile menu script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileToggle = document.querySelector('.mobile-toggle');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      
+      mobileToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <!-- Modern Header -->
+  <header id="header" class="modern-header">
+    <div class="header-wrapper">
+      <div class="header-content">
+        <a href="/" class="brand">
+          <img src="{% static 'images/logo.png' %}" alt="" class="brand-logo">
+          <span class="brand-name">Shop Cart</span>
+        </a>
+
+        <nav class="main-nav">
+          <div class="nav-links">
+            <a href="/" class="nav-item {% if request.path == '/' %}active{% endif %}">
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+            </a>
+            <a href="/about" class="nav-item {% if request.path == '/about' %}active{% endif %}">
+              <i class="fas fa-info-circle"></i>
+              <span>About</span>
+            </a>
+            <a href="/checkout" class="nav-item {% if request.path == '/checkout' %}active{% endif %}">
+              <i class="fas fa-shopping-bag"></i>
+              <span>Checkout</span>
+            </a>
+            <a href="/profile" class="nav-item {% if request.path == '/profile' %}active{% endif %}">
+              <i class="fas fa-user"></i>
+              <span>Profile</span>
+            </a>
+          </div>
+
+          <div class="nav-actions">
+            <button type="button" class="cart-btn" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cart">0</span>
+            </button>
+
+            {% if request.user.is_authenticated %}
+            <a href="/auth/logout/" class="auth-btn logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </a>
+            {% else %}
+            <div class="auth-dropdown">
+              <button class="auth-btn">
+                <i class="fas fa-user"></i>
+                <span>Account</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <a href="/auth/signup/" class="dropdown-item">
+                  <i class="fas fa-user-plus"></i>
+                  <span>Sign Up</span>
+                </a>
+                <a href="/auth/login/" class="dropdown-item">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <span>Login</span>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+
+            <a href="/contact" class="contact-btn">
+              <i class="fas fa-envelope"></i>
+              <span>Contact</span>
+            </a>
+          </div>
+        </nav>
+
+        <button class="mobile-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+
+      {% block content %}
+      
+
+     
+      
+
+
+
+      
+      {% endblock content %}
+      
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    {% block body %}
+
+
+
+
+    
+    {% endblock body %}
+
+
+
+
+  </main><!-- End #main -->
+
+  <!-- Modern Footer -->
+  <footer class="modern-footer">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-section brand-section">
+          <div class="footer-brand">
+            <img src="{% static 'images/logo.png' %}" alt="" class="footer-logo">
+            <h3>Shop Cart</h3>
+          </div>
+          <p class="brand-description">
+            Your one-stop destination for quality products and exceptional shopping experience.
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Shopping Street, Fashion Ave, 10001</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+1 234 567 890</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>hello@shopcart.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Customer Service</h4>
+          <ul class="footer-links">
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section newsletter-section">
+          <h4>Stay Connected</h4>
+          <p>Subscribe to our newsletter for updates and exclusive offers!</p>
+          <form class="newsletter-form">
+            <div class="form-group">
+              <input type="email" placeholder="Enter your email" class="newsletter-input">
+              <button type="submit" class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          © 2025 Shop Cart. All rights reserved.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static '/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static '/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static '/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static '/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

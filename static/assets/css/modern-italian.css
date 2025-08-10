@@ -1,0 +1,209 @@
+/* Modern Italian Style CSS */
+:root {
+    --primary-color: #1a5f7a;
+    --secondary-color: #e6c9a2;
+    --accent-color: #d64933;
+    --text-color: #2d3436;
+    --light-bg: #f6f5f3;
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Lato', sans-serif;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Header Styling */
+#header {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.navbar a {
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--accent-color);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 12px 30px;
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.form-control {
+    border: 2px solid #eee;
+    padding: 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+/* Product Cards */
+.product-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.product-card img {
+    transition: 0.5s;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-title {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.product-price {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Alert Messages */
+.alert {
+    border: none;
+    border-radius: 6px;
+    padding: 15px 20px;
+}
+
+/* Footer Styling */
+footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 60px 0;
+}
+
+/* Auth Forms */
+.auth-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.auth-container h2 {
+    font-family: var(--font-primary);
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(26, 95, 122, 0.9), rgba(230, 201, 162, 0.9)), url('../images/backgrounds/italian-pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 120px 0;
+    color: white;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Utilities */
+.section-padding {
+    padding: 100px 0;
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.bg-light-custom {
+    background-color: var(--light-bg);
+}
+
+/* Responsive Tables */
+.table-responsive {
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Navigation Pills */
+.nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+}
+
+/* Cart Badge */
+.cart-badge {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.6rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}

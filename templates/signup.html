@@ -1,0 +1,87 @@
+{% extends 'base.html' %} 
+{% block title %}Signup{% endblock title %} 
+{% block content %}
+
+<div class="signup-container">
+    <div class="signup-wrapper">
+        <div class="signup-left">
+            <div class="welcome-text">
+                <h1>Welcome to ShopCart</h1>
+                <p>Your Journey to Amazing Shopping Starts Here</p>
+            </div>
+        </div>
+        <div class="signup-right">
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show custom-alert" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+
+            <div class="signup-form-container">
+                <h2>Create Account</h2>
+                <p class="subtitle">Join our exclusive community today</p>
+
+                <form action="/auth/signup/" method="post" class="signup-form">
+                    {% csrf_token %}
+                    
+                    <div class="form-field">
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="pass1"
+                                name="pass1"
+                                placeholder="Create password"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="pass2"
+                                name="pass2"
+                                placeholder="Confirm password"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="signup-btn">Create Account</button>
+
+                    <div class="login-link">
+                        Already have an account? <a href="/auth/login/">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
